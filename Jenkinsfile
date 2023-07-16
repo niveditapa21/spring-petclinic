@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    DOCKERHUB_CREDENTIALS=credentials('2fd95e17-63a3-494f-b5c8-e592fab26cde')
+    DOCKERHUB_CREDENTIALS=credentials('071f0c60-f5b5-4a20-a2c2-7a5885d6458a')
   }
   stages {
     stage("git") {
@@ -15,6 +15,7 @@ pipeline {
         }
     stage('Build') {
       steps {
+        
         sh 'docker build -t nivedita21/demo1 .'
       }
     }
