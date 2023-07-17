@@ -16,7 +16,7 @@ pipeline {
     stage('Build') {
       steps {
         
-        sh 'docker build  dockerfile -t nivedita21/demo1 .'
+        sh 'docker build  /spring-petclinic/main/dockerfile -t nivedita21/demo1 .'
       }
     }
     stage('Login') {
