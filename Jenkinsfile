@@ -16,7 +16,7 @@ pipeline {
     stage('Build') {
       steps {
         
-        sh 'docker build -t nivedita21/demo1 .'
+        sh 'docker build  dockerfile -t nivedita21/demo1 .'
       }
     }
     stage('Login') {
