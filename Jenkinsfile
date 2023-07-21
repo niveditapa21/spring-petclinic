@@ -31,9 +31,10 @@ pipeline {
                  junit(
                   allowEmptyResults: true,
                   testResults: '*/test-reports/.xml'  
-             )
-           }
-         } 
+              )
+              }
+            }
+          }
 
         stage('docker image creation & Push') {
              steps {
