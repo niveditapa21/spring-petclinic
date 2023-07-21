@@ -36,4 +36,5 @@ pipeline {
                  sh 'docker push nivedita21/demo1'
       }
     }
+  }
 }
