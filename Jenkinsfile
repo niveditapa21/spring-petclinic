@@ -20,16 +20,16 @@ pipeline {
         }
         
      
-        post {
+      post {
           always {
              junit(
                   allowEmptyResults: true,
                   testResults: '*/test-reports/.xml'
-                 )
-      }
+        )
+        }
    } 
 
-         stage('docker image creation & Push') {
+     stage('docker image creation & Push') {
              steps {
                  sh 'docker build  -t  nivedita21/demo1 .'
                  sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
