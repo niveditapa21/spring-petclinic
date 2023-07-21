@@ -3,7 +3,7 @@ pipeline {
     tools {
         maven "maven"
         jdk "java"
-    }
+     }
     stages {
         stage('Initialize'){
             steps{
@@ -36,6 +36,4 @@ pipeline {
                  sh 'docker push nivedita21/demo1'
       }
     }
-
-     
 }
