@@ -13,19 +13,28 @@ pipeline {
                 url:  'https://github.com/niveditapa21/spring-petclinic.git'
             }
         }
-    stage('Build') {
+    stage('maven Build') {
       steps {
+         withMaven(maven: 'maven') {
+              sh "mvn clean package -DskipTests=true -Dcheckstyle.skip" 
+              archive 'target/*.jar'
         
+         }
+      }
+    }
+
+     stage('Test Maven - JUnit') {
+            steps {
+              withMaven(maven: 'maven') {
+              sh "mvn test -Dcheckstyle.skip"
+              }
+            }
+     }
+    
+    stage('docker image creation & Push') {
+      steps {
         sh 'docker build  -t  nivedita21/demo1 .'
-      }
-    }
-    stage('Login') {
-      steps {
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-      }
-    }
-    stage('Push') {
-      steps {
         sh 'docker push nivedita21/demo1'
       }
     }
